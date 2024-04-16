@@ -33,7 +33,7 @@ export const createMachineCleaning =
         },
       };
       const { data } = await axios.post(
-        `/api/v1/create/machinecleaning/record/${id}`,
+        `${process.env.REACT_APP_API}/api/v1/create/machinecleaning/record/${id}`,
         machinecleaning,
         config
       );
@@ -54,7 +54,7 @@ export const allMachineCleaning = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_MACHINECLEANING_REQUEST });
     const { data } = await axios.get(
-      `/api/v1/store/machinecleaning/record/${id}`
+      `${process.env.REACT_APP_API}/api/v1/store/machinecleaning/record/${id}`
     );
     dispatch({
       type: ALL_MACHINECLEANING_SUCCESS,
@@ -74,7 +74,7 @@ export const allMachineCleaning = (id) => async (dispatch) => {
 export const singleMachineCleaningRecord = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_MACHINECLEANING_REQUEST });
-    const { data } = await axios.get(`/api/v1/machinecleaning/record/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/machinecleaning/record/${id}`);
     dispatch({
       type: SINGLE_MACHINECLEANING_SUCCESS,
       payload: data.storeStoreMachineCleaning,
@@ -136,7 +136,7 @@ export const updateMachineCleaning = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/store/machinecleaning/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/store/machinecleaning/record/${id}`,
       storeData,
       config
     );
@@ -156,7 +156,7 @@ export const deleteMachineCleaning = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_MACHINECLEANING_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/machinecleaning/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/machinecleaning/record/${id}`,
       {
         withCredentials: true,
       }

@@ -26,7 +26,7 @@ import {
 export const allUsersSA = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_SUPERADMIN_USERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/superadmin/allusers`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/superadmin/allusers`);
     console.log(data);
     dispatch({
       type: ALL_SUPERADMIN_USERS_SUCCESS,
@@ -43,7 +43,7 @@ export const allUsersSA = () => async (dispatch) => {
 export const allPendingSA = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_SUPERADMIN_PENDINGADMIN_REQUEST });
-    const { data } = await axios.get(`/api/v1/superadmin/all/pendingadmin`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/superadmin/all/pendingadmin`);
     console.log(data);
     dispatch({
       type: ALL_SUPERADMIN_PENDINGADMIN_SUCCESS,
@@ -68,7 +68,7 @@ export const adminApproval = (id) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/superadmin/approved/admin/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/superadmin/approved/admin/${id}`,
       config
     );
     dispatch({
@@ -87,7 +87,7 @@ export const adminApproval = (id) => async (dispatch) => {
 export const allAdminSA = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_SUPERADMIN_ADMIN_REQUEST });
-    const { data } = await axios.get(`/api/v1/superadmin/all/admin`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/superadmin/all/admin`);
     console.log(data);
     dispatch({
       type: ALL_SUPERADMIN_ADMIN_SUCCESS,

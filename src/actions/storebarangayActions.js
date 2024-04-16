@@ -32,7 +32,7 @@ export const createStorebarangay = (formdata, id) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/v1/create/barangay/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/create/barangay/${id}`,
       formdata,
       config
     );
@@ -51,7 +51,7 @@ export const createStorebarangay = (formdata, id) => async (dispatch) => {
 export const allStorebarangayList = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_STOREBARANGAY_REQUEST });
-    const { data } = await axios.get(`/api/v1/store/barangay/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/store/barangay/${id}`);
     dispatch({
       type: ALL_STOREBARANGAY_SUCCESS,
       payload: data.storeBarangay,
@@ -70,7 +70,7 @@ export const allStorebarangayList = (id) => async (dispatch) => {
 export const singleStorebarangay = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_STOREBARANGAY_REQUEST });
-    const { data } = await axios.get(`/api/v1/store/barangay/details/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/store/barangay/details/${id}`);
     dispatch({
       type: SINGLE_STOREBARANGAY_SUCCESS,
       payload: data.storeBarangay,
@@ -98,7 +98,7 @@ export const updateStorebarangay = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/store/barangay//${id}`,
+      `${process.env.REACT_APP_API}/api/v1/store/barangay//${id}`,
       storeData,
       config
     );
@@ -118,7 +118,7 @@ export const updateStorebarangay = (id, storeData) => async (dispatch) => {
 export const deleteStorebarangay = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_STOREBARANGAY_REQUEST });
-    const { data } = await axios.delete(`/api/v1/store/barangay/delete/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/store/barangay/delete/${id}`, {
       withCredentials: true,
     });
     dispatch({

@@ -27,7 +27,7 @@ export const createStoreStaff = (storestaff, id) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/v1/assigned/staff/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/assigned/staff/${id}`,
       storestaff,
       config
     );
@@ -46,7 +46,7 @@ export const createStoreStaff = (storestaff, id) => async (dispatch) => {
 export const allStoreStaff = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_STORESTAFF_REQUEST });
-    const { data } = await axios.get(`/api/v1/assigned/staff/details/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/assigned/staff/details/${id}`);
     dispatch({
       type: ALL_STORESTAFF_SUCCESS,
       payload: data.storeStaff,
@@ -65,7 +65,7 @@ export const allStoreStaff = (id) => async (dispatch) => {
 export const singleStoreStaff = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_STORESTAFF_REQUEST });
-    const { data } = await axios.get(`/api/v1/assigned/staff/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/assigned/staff/${id}`);
     dispatch({
       type: SINGLE_STORESTAFF_SUCCESS,
       payload: data.storeStaffdetails,
@@ -84,7 +84,7 @@ export const singleStoreStaff = (id) => async (dispatch) => {
 export const deleteStoreStaff = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_STORESTAFF_REQUEST });
-    const { data } = await axios.delete(`/api/v1/admin/assigned/staff/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/admin/assigned/staff/${id}`, {
       withCredentials: true,
     });
     dispatch({

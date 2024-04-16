@@ -45,7 +45,7 @@ export const createProduct = (productData, id) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/v1/admin/create/product/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/create/product/${id}`,
       productData,
       config
     );
@@ -65,7 +65,7 @@ export const createProduct = (productData, id) => async (dispatch) => {
 export const allProductList = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/all/product/store/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/all/product/store/${id}`);
     dispatch({
       type: ALL_PRODUCT_SUCCESS,
       payload: data.product,
@@ -83,7 +83,7 @@ export const allProductList = (id) => async (dispatch) => {
 export const allProductStockLogs = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTSTOCKLOG_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/product/stocklogs/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/product/stocklogs/${id}`);
     dispatch({
       type: ALL_PRODUCTSTOCKLOG_SUCCESS,
       payload: data.stockLogs,
@@ -114,7 +114,7 @@ export const updateProductStockLog = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/update/product/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/update/product/${id}`,
       productData,
       config
     );
@@ -135,7 +135,7 @@ export const deleteProductStockLog =
     try {
       dispatch({ type: DELETE_PRODUCTSTOCKLOG_REQUEST });
       const { data } = await axios.delete(
-        `/api/v1/admin/product/${productid}/stocklogs/delete/${stockid}`,
+        `${process.env.REACT_APP_API}/api/v1/admin/product/${productid}/stocklogs/delete/${stockid}`,
         {
           withCredentials: true,
         }
@@ -162,7 +162,7 @@ export const getProductDetails = (id) => async (dispatch) => {
       withCredentials: true,
     };
 
-    const { data } = await axios.get(`/api/v1/admin/all/product/${id}`, config);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/all/product/${id}`, config);
 
     dispatch({
       type: SINGLE_PRODUCT_SUCCESS,
@@ -188,7 +188,7 @@ export const updateProductDetails = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/update/product/price/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/update/product/price/${id}`,
       productData,
       config
     );
@@ -208,7 +208,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/admin/product/delete/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/product/delete/${id}`,
       {
         withCredentials: true,
       }

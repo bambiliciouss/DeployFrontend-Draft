@@ -34,7 +34,7 @@ export const createPhysicalChemTest =
         },
       };
       const { data } = await axios.post(
-        `/api/v1/create/PhyChemTest/record/${id}`,
+        `${process.env.REACT_APP_API}/api/v1/create/PhyChemTest/record/${id}`,
         physicalchemtest,
         config
       );
@@ -54,7 +54,7 @@ export const createPhysicalChemTest =
 export const allPhysicalChemTest = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PHYSICALCHEMTEST_REQUEST });
-    const { data } = await axios.get(`/api/v1/store/PhyChemTest/record/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/store/PhyChemTest/record/${id}`);
     dispatch({
       type: ALL_PHYSICALCHEMTEST_SUCCESS,
       payload: data.allPhyChemTests,
@@ -73,7 +73,7 @@ export const allPhysicalChemTest = (id) => async (dispatch) => {
 export const singlePhysicalChemTestRecord = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_PHYSICALCHEMTEST_REQUEST });
-    const { data } = await axios.get(`/api/v1/PhyChemTest/record//${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/PhyChemTest/record//${id}`);
     dispatch({
       type: SINGLE_PHYSICALCHEMTEST_SUCCESS,
       payload: data.phyChemTest,
@@ -105,7 +105,7 @@ export const updatePhysicalChemTest = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/store/PhyChemTest/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/store/PhyChemTest/record/${id}`,
       storeData,
       config
     );
@@ -124,7 +124,7 @@ export const updatePhysicalChemTest = (id, storeData) => async (dispatch) => {
 export const deletePhysicalChemTest = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PHYSICALCHEMTEST_REQUEST });
-    const { data } = await axios.delete(`/api/v1/PhyChemTest/record/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/PhyChemTest/record/${id}`, {
       withCredentials: true,
     });
     dispatch({

@@ -32,7 +32,7 @@ export const createTypesGallon = (id, typeofgallon) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/register/typeofgallon/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/register/typeofgallon/${id}`,
       typeofgallon,
       config
     );
@@ -57,7 +57,7 @@ export const clearErrors = () => async (dispatch) => {
 export const allTypesGallon = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_TYPESGALLON_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/all/typeofgallon/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/all/typeofgallon/${id}`);
     dispatch({
       type: ALL_TYPESGALLON_SUCCESS,
       payload: data.typeGallon,
@@ -75,7 +75,7 @@ export const deleteTypesGallon = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_TYPESGALLON_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/admin/delete/typeofgallon/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/delete/typeofgallon/${id}`,
       {
         withCredentials: true,
       }
@@ -95,7 +95,7 @@ export const deleteTypesGallon = (id) => async (dispatch) => {
 export const singleTypesGallon = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_TYPESGALLON_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/typeofgallon/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/typeofgallon/${id}`);
     dispatch({
       type: SINGLE_TYPESGALLON_SUCCESS,
       payload: data.gallonType,
@@ -121,7 +121,7 @@ export const updateTypesGallon = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/update/typeofgallon/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/update/typeofgallon/${id}`,
       storeData,
       config
     );

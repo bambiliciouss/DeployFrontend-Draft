@@ -35,7 +35,7 @@ export const createAddress = (formdata, id) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post(`/api/v1/me/address`, formdata, config);
+    const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/me/address`, formdata, config);
     dispatch({
       type: CREATE_ADDRESS_SUCCESS,
       payload: data.user,
@@ -51,7 +51,7 @@ export const createAddress = (formdata, id) => async (dispatch) => {
 export const allAddress = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ADDRESS_REQUEST });
-    const { data } = await axios.get(`/api/v1/me/addresses`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/addresses`);
     dispatch({
       type: ALL_ADDRESS_SUCCESS,
       payload: data.addresses,
@@ -70,7 +70,7 @@ export const allAddress = () => async (dispatch) => {
 export const singleAddress = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_ADDRESS_REQUEST });
-    const { data } = await axios.get(`/api/v1/me/address/details/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/address/details/${id}`);
     dispatch({
       type: SINGLE_ADDRESS_SUCCESS,
       payload: data.address,
@@ -98,7 +98,7 @@ export const updateAddress = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/me/update/address/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/me/update/address/${id}`,
       storeData,
       config
     );
@@ -158,7 +158,7 @@ export const updateAddress = (id, storeData) => async (dispatch) => {
 export const deleteAddress = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ADDRESS_REQUEST });
-    const { data } = await axios.delete(`/api/v1/me/address/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/me/address/${id}`, {
       withCredentials: true,
     });
     dispatch({
@@ -190,7 +190,7 @@ export const setDefaultAddress = (id) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/me/setdefault/address/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/me/setdefault/address/${id}`,
       config
     );
     dispatch({
@@ -209,7 +209,7 @@ export const setDefaultAddress = (id) => async (dispatch) => {
 export const AdminallAddress = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_ADDRESS_REQUEST });
-    const { data } = await axios.get(`/api/v1/me/addresses/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/addresses/${id}`);
     dispatch({
       type: ALL_ADDRESS_SUCCESS,
       payload: data.addresses,

@@ -33,7 +33,7 @@ export const createBusinessPermit =
         },
       };
       const { data } = await axios.post(
-        `/api/v1/create/businesspermit/record//${id}`,
+        `${process.env.REACT_APP_API}/api/v1/create/businesspermit/record//${id}`,
         businesspermit,
         config
       );
@@ -54,7 +54,7 @@ export const allBusinessPermit = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_BUSINESSPERMIT_REQUEST });
     const { data } = await axios.get(
-      `/api/v1/store/businesspermit/record/${id}`
+      `${process.env.REACT_APP_API}/api/v1/store/businesspermit/record/${id}`
     );
     dispatch({
       type: ALL_BUSINESSPERMIT_SUCCESS,
@@ -74,7 +74,7 @@ export const allBusinessPermit = (id) => async (dispatch) => {
 export const singleBusinessPermitRecord = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_BUSINESSPERMIT_REQUEST });
-    const { data } = await axios.get(`/api/v1/businesspermit/record/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/businesspermit/record/${id}`);
     dispatch({
       type: SINGLE_BUSINESSPERMIT_SUCCESS,
       payload: data.businessPermit,
@@ -107,7 +107,7 @@ export const updateBusinessPermit = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/store/businesspermit/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/store/businesspermit/record/${id}`,
       storeData,
       config
     );
@@ -127,7 +127,7 @@ export const deleteBusinessPermit = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_BUSINESSPERMIT_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/businesspermit/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/businesspermit/record/${id}`,
       {
         withCredentials: true,
       }

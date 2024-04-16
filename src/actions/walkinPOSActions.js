@@ -33,7 +33,7 @@ export const createWalkinpos = (walkinpos, id) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      ` /api/v1/create/othergallon/inventory/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/create/othergallon/inventory/${id}`,
       walkinpos,
       config
     );
@@ -59,7 +59,7 @@ export const allWalkinpos = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_WALKINPOS_REQUEST });
     const { data } = await axios.get(
-      `/api/v1/all/store/othergallon/inventory/${id}`
+      `${process.env.REACT_APP_API}/api/v1/all/store/othergallon/inventory/${id}`
     );
     dispatch({
       type: ALL_WALKINPOS_SUCCESS,
@@ -78,7 +78,7 @@ export const deleteWalkinpos = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_WALKINPOS_REQUEST });
     const { data } = await axios.delete(
-      `/api/v1/delete/othergallon/inventory/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/delete/othergallon/inventory/${id}`,
       {
         withCredentials: true,
       }
@@ -106,7 +106,7 @@ export const getWalkinposDetails = (id) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      `/api/v1/details/othergallon/inventory/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/details/othergallon/inventory/${id}`,
       config
     );
 
@@ -134,7 +134,7 @@ export const updateWalkinpos = (id, walkinposData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/update/othergallon/inventory/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/update/othergallon/inventory/${id}`,
       walkinposData,
       config
     );

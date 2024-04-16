@@ -32,7 +32,7 @@ export const createBarangayHealth = (formdata, id) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/v1/create/barangayhealth/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/create/barangayhealth/record/${id}`,
       formdata,
       config
     );
@@ -52,7 +52,7 @@ export const allBarangayHealth = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_BARANGAYHEALTH_REQUEST });
     const { data } = await axios.get(
-      `/api/v1/store/barangayhealth/record/${id}`
+      `${process.env.REACT_APP_API}/api/v1/store/barangayhealth/record/${id}`
     );
     dispatch({
       type: ALL_BARANGAYHEALTH_SUCCESS,
@@ -71,7 +71,7 @@ export const allBarangayHealth = (id) => async (dispatch) => {
 export const singleBarangayHealth = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_BARANGAYHEALTH_REQUEST });
-    const { data } = await axios.get(`/api/v1/barangayhealth/record/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/barangayhealth/record/${id}`);
     dispatch({
       type: SINGLE_BARANGAYHEALTH_SUCCESS,
       payload: data.barangayHealth,
@@ -103,7 +103,7 @@ export const updateBarangayHealth = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/store/barangayhealth/record/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/store/barangayhealth/record/${id}`,
       storeData,
       config
     );
@@ -122,7 +122,7 @@ export const updateBarangayHealth = (id, storeData) => async (dispatch) => {
 export const deleteBarangayHealth = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_BARANGAYHEALTH_REQUEST });
-    const { data } = await axios.delete(`/api/v1/barangayhealth/record/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/barangayhealth/record/${id}`, {
       withCredentials: true,
     });
     dispatch({

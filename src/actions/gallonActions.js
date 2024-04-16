@@ -26,7 +26,7 @@ export const createGallon = (gallon) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "/api/v1/register/gallon",
+      `${process.env.REACT_APP_API}/api/v1/register/gallon`,
       gallon,
       config
     );
@@ -51,7 +51,7 @@ export const clearErrors = () => async (dispatch) => {
 export const myGallons = () => async (dispatch) => {
   try {
     dispatch({ type: MY_GALLON_REQUEST });
-    const { data } = await axios.get(`/api/v1/my-gallons`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/my-gallons`);
     dispatch({
       type: MY_GALLON_SUCCESS,
       payload: data.gallon,
@@ -67,7 +67,7 @@ export const myGallons = () => async (dispatch) => {
 export const allGallons = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_GALLONS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/gallons`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/gallons`);
     dispatch({
       type: ALL_GALLONS_SUCCESS,
       payload: data.gallons,
@@ -83,7 +83,7 @@ export const allGallons = () => async (dispatch) => {
 export const deleteGallon = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_GALLON_REQUEST });
-    const { data } = await axios.delete(`/api/v1/delete/my-gallon/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/delete/my-gallon/${id}`, {
       withCredentials: true,
     });
     dispatch({

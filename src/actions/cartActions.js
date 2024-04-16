@@ -9,7 +9,7 @@ import {
 } from "../constants/cartConstants";
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/admin/typeofgallon/${id}`);
+  const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/typeofgallon/${id}`);
   console.log(data);
   dispatch({
     type: ADD_TO_CART,
@@ -25,7 +25,7 @@ export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
 
 export const addProductToCart =
   (id, quantity) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v1/admin/all/product//${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/all/product//${id}`);
     console.log("PRODUCTS", data);
     dispatch({
       type: ADD_TO_CART_PRODUCT,

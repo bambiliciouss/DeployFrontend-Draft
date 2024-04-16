@@ -27,7 +27,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post(`/api/v1/order/new`, order);
+    const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/order/new`, order);
     dispatch({
       type: CREATE_ORDER_SUCCESS,
       payload: data,
@@ -49,7 +49,7 @@ export const clearErrors = () => async (dispatch) => {
 export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
-    const { data } = await axios.get("/api/v1/orders/me");
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/orders/me`);
     dispatch({
       type: MY_ORDERS_SUCCESS,
 
@@ -66,7 +66,7 @@ export const myOrders = () => async (dispatch) => {
 export const allOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/orders`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/orders`);
     dispatch({
       type: ALL_ORDERS_SUCCESS,
       payload: data,
@@ -82,7 +82,7 @@ export const allOrders = () => async (dispatch) => {
 export const allOrdersAdmin = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/all/admin/orders/`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/all/admin/orders/`);
     dispatch({
       type: ALL_ORDERS_SUCCESS,
       payload: data,
@@ -98,7 +98,7 @@ export const allOrdersAdmin = () => async (dispatch) => {
 export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/order/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/order/${id}`);
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
       payload: data.order,
@@ -120,7 +120,7 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
       },
       withCredentials: true,
     };
-    const { data } = await axios.put(`/api/v1/order/${id}`, orderData, config);
+    const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/order/${id}`, orderData, config);
     dispatch({
       type: UPDATE_ORDER_SUCCESS,
       payload: data.success,
@@ -143,7 +143,7 @@ export const updateOrderwithRider = (id, orderData) => async (dispatch) => {
       withCredentials: true,
     };
     const { data } = await axios.put(
-      `/api/v1/order/assign/rider/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/order/assign/rider/${id}`,
       orderData,
       config
     );
@@ -163,7 +163,7 @@ export const updateOrderwithRider = (id, orderData) => async (dispatch) => {
 export const allOrdersEmployee = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/all/employee/orders/`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/all/employee/orders/`);
     console.log(data)
    
     dispatch({
@@ -181,7 +181,7 @@ export const allOrdersEmployee = () => async (dispatch) => {
 export const allOrdersRider = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
-    const { data } = await axios.get(`/api/v1/all/rider/orders/`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/all/rider/orders/`);
     console.log(data)
    
     dispatch({

@@ -30,7 +30,7 @@ export const createStoreBranch = (storeBranch) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "/api/v1/register/storebranch",
+      `${process.env.REACT_APP_API}/api/v1/register/storebranch`,
       storeBranch,
       config
     );
@@ -55,7 +55,7 @@ export const clearErrors = () => async (dispatch) => {
 export const allStoreBranch = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_STOREBRANCH_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/storebranch`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/storebranch`);
     dispatch({
       type: ALL_STOREBRANCH_SUCCESS,
       payload: data.storeBranch,
@@ -71,7 +71,7 @@ export const allStoreBranch = () => async (dispatch) => {
 export const allStoreBranchUser = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_STOREBRANCH_REQUEST });
-    const { data } = await axios.get(`/api/v1/available/store`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/available/store`);
     dispatch({
       type: ALL_STOREBRANCH_SUCCESS,
       payload: data.storeBarangay,
@@ -87,7 +87,7 @@ export const allStoreBranchUser = () => async (dispatch) => {
 export const allAdminStoreBranch = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_STOREBRANCH_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/all/store`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/all/store`);
     dispatch({
       type: ALL_STOREBRANCH_SUCCESS,
       payload: data.storeBranch,
@@ -103,7 +103,7 @@ export const allAdminStoreBranch = () => async (dispatch) => {
 export const deleteStoreBranch = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_STOREBRANCH_REQUEST });
-    const { data } = await axios.delete(`/api/v1/delete/storebranch/${id}`, {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/delete/storebranch/${id}`, {
       withCredentials: true,
     });
     dispatch({
@@ -128,7 +128,7 @@ export const getStoreDetails = (id) => async (dispatch) => {
       withCredentials: true,
     };
 
-    const { data } = await axios.get(`/api/v1/admin/store/${id}`, config);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/store/${id}`, config);
 
     // Log user details
     console.log("STOREDETAILS", data.storeBranch);
@@ -156,7 +156,7 @@ export const updateStoreBranch = (id, storeData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/store/update/${id}`,
+      `${process.env.REACT_APP_API}/api/v1/admin/store/update/${id}`,
       storeData,
       config
     );
