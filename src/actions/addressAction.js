@@ -34,6 +34,7 @@ export const createAddress = (formdata, id) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: true,
     };
     const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/me/address`, formdata, config);
     dispatch({
@@ -51,7 +52,7 @@ export const createAddress = (formdata, id) => async (dispatch) => {
 export const allAddress = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ADDRESS_REQUEST });
-    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/addresses`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/addresses`, {withCredentials: true});
     dispatch({
       type: ALL_ADDRESS_SUCCESS,
       payload: data.addresses,
@@ -70,7 +71,7 @@ export const allAddress = () => async (dispatch) => {
 export const singleAddress = (id) => async (dispatch) => {
   try {
     dispatch({ type: SINGLE_ADDRESS_REQUEST });
-    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/address/details/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me/address/details/${id}`,{withCredentials: true});
     dispatch({
       type: SINGLE_ADDRESS_SUCCESS,
       payload: data.address,

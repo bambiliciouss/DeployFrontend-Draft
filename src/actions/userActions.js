@@ -51,6 +51,7 @@ export const newregister = (userData) => async (dispatch) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
+      withCredentials: true
     };
     const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/register`, userData, config);
     dispatch({
@@ -151,6 +152,7 @@ export const login = (email, password) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: true
     };
     const { data } = await axios.post(
       `${process.env.REACT_APP_API}/api/v1/login`,
@@ -200,7 +202,7 @@ export const loadUser = () => async (dispatch) => {
     //   },
     // };
     dispatch({ type: LOAD_USER_REQUEST });
-    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`,{withCredentials: true});
     dispatch({
       type: LOAD_USER_SUCCESS,
       payload: data.user,
